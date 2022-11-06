@@ -6,7 +6,7 @@ using namespace std;
 
 namespace canSumApp
 {
-    bool canSum(long targetSum, const vector<long> &numbers, map<long, bool> &memo)
+    bool canSum(const long targetSum, const vector<long> &numbers, map<long, bool> &memo)
     {
         if (targetSum == 0)
             return true;

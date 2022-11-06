@@ -7,37 +7,44 @@ using namespace std;
 
 namespace bestSumApp
 {
-    unique_ptr<vector<long>> &bestSum(long targetSum, const vector<long> &numbers, map<long, unique_ptr<vector<long>>> &memo)
+    unique_ptr<vector<long>> &bestSum(const long targetSum, const vector<long> &numbers, map<long, unique_ptr<vector<long>>> &memo)
     {
         if (memo.contains(targetSum)) return memo[targetSum];
         if (targetSum == 0)
         {
             memo[targetSum] = make_unique<vector<long>>();
-            memo[targetSum].reset(new vector<long>(0));
             return memo[targetSum];
         }
         if (targetSum < 0)
         {
-            memo[targetSum] = make_unique<vector<long>>();
-            memo[targetSum].reset();
+            memo[targetSum] = nullptr;
             return memo[targetSum];
         }
-        vector<long>* shortestCombination = NULL;
+        unique_ptr<vector<long>> shortestCombination;
 
         for (auto &&item : numbers)
         {
             const auto remainder = targetSum - item;
-            const auto &remainderCombination = bestSum(remainder, numbers, memo);
-            if (remainderCombination)
+            auto &remainderCombination = bestSum(remainder, numbers, memo);
+            if (remainderCombination != nullptr)
             {
-                const auto combination = new vector<long>(*remainderCombination);
+                auto combination = make_unique<vector<long>>();
+                combination->assign(remainderCombination->begin(), remainderCombination->end());
                 combination->insert(combination->end(), item);
-                if (!shortestCombination || combination->size() < shortestCombination->size())
-                    shortestCombination = combination;
+                if (shortestCombination == nullptr || combination->size() < shortestCombination->size())
+                {
+                    shortestCombination = make_unique<vector<long>>(*combination);
+                }
             }
         }
-        memo[targetSum] = make_unique<vector<long>>();
-        memo[targetSum].reset(shortestCombination);
+        if (shortestCombination != nullptr)
+        {
+            memo[targetSum] = make_unique<vector<long>>(*shortestCombination);
+        }
+        else
+        {
+            memo[targetSum] = nullptr;
+        }
         return memo[targetSum];
     }
 
@@ -47,7 +54,7 @@ namespace bestSumApp
         {
             return L"null";
         }
-        wstring res = L"[";
+        wstring res = L"(";
         vector<long>::iterator i;
         for (i = vec->begin(); i != vec->end() - 1; ++i)
         {
@@ -55,7 +62,7 @@ namespace bestSumApp
             res.append(L",");
         }
         res.append(to_wstring(*(i)));
-        res.append(L"]");
+        res.append(L")");
         return res;
     }
 

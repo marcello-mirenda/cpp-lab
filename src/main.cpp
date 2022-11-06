@@ -3,6 +3,7 @@
 #include "include/canSumApp.hpp"
 #include "include/howSumApp.hpp"
 #include "include/bestSumApp.hpp"
+#include "include/canConstructApp.hpp"
 
 int main()
 {
@@ -10,5 +11,6 @@ int main()
     //return gridTravelerApp::gridTravelerApp();
     //return canSumApp::canSumApp();
     //return howSumApp::howSumApp();
-    return bestSumApp::bestSumApp();
+    //return bestSumApp::bestSumApp();
+    return canConstructApp::canConstructApp();
 }

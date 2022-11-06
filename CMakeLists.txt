@@ -20,6 +20,7 @@ target_sources(cpp-lab
     ${CMAKE_CURRENT_SOURCE_DIR}/canSumApp.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/howSumApp.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/bestSumApp.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/canConstructApp.cpp
 )
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})

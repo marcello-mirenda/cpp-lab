@@ -5,7 +5,7 @@ using namespace std;
 
 namespace gridTravelerApp
 {
-    long gridTraveler(long m, long n, map<wstring,long>& memo)
+    long gridTraveler(const long m, const long n, map<wstring,long>& memo)
     {
         const wstring key = to_wstring(m) + L"," + to_wstring(n);
         if (memo.contains(key)) return memo[key];
