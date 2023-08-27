@@ -12,18 +12,15 @@ namespace fibApp
             return memo[n];
         if (n <= 2)
             return 1;
-
         memo[n] = fib(n - 1, memo) + fib(n - 2, memo);
         return memo[n];
     }
 
-    int fibApp()
+    int fibApp(int num)
     {
         map<long, long> memo;
-        // cout << fib(6, memo) << "\n";
-        // cout << fib(7, memo) << "\n";
-        // cout << fib(8, memo) << "\n";
-        cout << fib(50, memo) << "\n";
+        cout << fib(num, memo) << "\n";
+
         return EXIT_SUCCESS;
     }
 } // namespace fibApp

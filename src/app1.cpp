@@ -1,8 +1,8 @@
 #include <iostream>
 #include <ios>
 
-#include "func.hpp"
-#include "datelab.hpp"
+#include "include/func.hpp"
+#include "include/datelab.hpp"
 
 void app1()
 {

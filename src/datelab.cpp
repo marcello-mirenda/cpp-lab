@@ -1,6 +1,4 @@
-#include <boost/date_time/gregorian/gregorian.hpp>
-
-#include "datelab.hpp"
+#include "include/datelab.hpp"
 
 namespace datelab
 {
