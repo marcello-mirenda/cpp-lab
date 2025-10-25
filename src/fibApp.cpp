@@ -6,7 +6,7 @@ using namespace std;
 namespace fibApp
 {
     // memoization
-    long fib(const long n, map<long, long> &memo)
+    float fib(const float n, map<float, float> &memo)
     {
         if (memo.contains(n))
             return memo[n];
@@ -16,10 +16,10 @@ namespace fibApp
         return memo[n];
     }
 
-    int fibApp(int num)
+    int fibApp(float num)
     {
-        map<long, long> memo;
-        cout << fib(num, memo) << "\n";
+        map<float, float> memo;
+        cout << std::fixed << fib(num, memo) << "\n";
 
         return EXIT_SUCCESS;
     }

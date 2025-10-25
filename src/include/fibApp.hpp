@@ -1,4 +1,4 @@
 namespace fibApp
 {
-    int fibApp(int num);
+    float fibApp(float num);
 } // namespace fibApp
